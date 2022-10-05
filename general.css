@@ -1,0 +1,14 @@
+body {
+    color: #d1d1da;
+    background-color: #1e1e2c;
+    font-family: "Verdana", "Helvetica", sans-serif;
+    font-size: 87.5%;
+    line-height: 1.25em;
+}
+a {
+    color: #009be6;
+    text-decoration: none;
+}
+p, a, li {
+    line-height: 1.25em;
+}

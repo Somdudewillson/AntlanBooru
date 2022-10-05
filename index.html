@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="post-grid.css" />
+    <link rel="stylesheet" href="post-detail.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+
+  <body>
+    <script src="js.cookie.min.js" defer></script>
+    <script src="novelai-api.js" defer></script>
+    <script src="settings-modal.js" defer></script>
+    <script src="post-grid.js" defer></script>
+    <script src="post-detail.js" defer></script>
+
+    <header id="top">
+      <div id="app-name-header">
+        <a id="app-logo" href="/"><img src="" /></a>
+        <a id="app-name" href="/">Antlanbooru</a>
+      </div>
+      <nav id="nav">
+        <menu id="main-menu" class="main">
+          <li id="nav-settings">
+            <a id="nav-settings-link" href="#" onclick="openSettings()"
+              >Settings</a
+            >
+          </li>
+          <li id="nav-wiki">
+            <a id="nav-wiki-link" href="https://docs.novelai.net/image.html">Wiki</a>
+          </li>
+        </menu>
+      </nav>
+    </header>
+    <div id="settings-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Settings</h2>
+        <form
+          id="settings-form"
+          class="flex"
+          action="javascript:;"
+          onsubmit="tryUpdateSettings(this)"
+          accept-charset="UTF-8"
+        >
+          <label for="access-key">NovelAI Access Key:</label>
+          <input type="text" name="access-key" id="access-key" /><br />
+          <button id="settings-submit" type="submit">Save Settings</button
+          ><span class="loader"></span>
+          <div id="setting-save-response"></div>
+        </form>
+      </div>
+    </div>
+    <section id="search-box">
+      <form
+        id="search-box-form"
+        class="flex"
+        action="javascript:;"
+        onsubmit="searchForPosts(this)"
+        accept-charset="UTF-8"
+      >
+        <input type="text" name="prompt" id="prompt" size="150" />
+        <button id="search-box-submit" type="submit">Generate</button>
+        <br />
+        <label for="result-quantity">Results to Display:</label>
+        <input
+          type="number"
+          id="result-quantity"
+          name="result-quantity"
+          min="5"
+          max="100"
+          step="5"
+          value="25"
+        />
+        <span> | </span>
+        <label for="aspect-ratio">Aspect Ratio</label>
+        <select name="aspect-ratio" id="aspect-ratio">
+            <option value="0">Square</option>
+            <option value="1" selected>Portrait</option>
+            <option value="2">Landscape</option>
+            <option value="-1">Random</option>
+          </select>
+      </form>
+    </section>
+    <hr />
+    <section id="posts">
+      <div class="post-gallery post-gallery-grid">
+        <div class="posts-container"></div>
+      </div>
+    </section>
+    <section id="post-detail">
+      <a id="nav-results-link" href="#" onclick="returnToResults()"
+        >← Back to Search Results</a
+      >
+      <hr />
+      <img id="full-post" src="" />
+    </section>
+  </body>
+</html>

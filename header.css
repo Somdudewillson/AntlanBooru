@@ -1,0 +1,26 @@
+header#top #app-name-header {
+    font-size: 1.75rem;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: "Tahoma", "Verdana", "Helvetica", sans-serif;
+    font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6, .heading {
+    font-family: "Tahoma", "Verdana", "Helvetica", sans-serif;
+    font-weight: bold;
+    line-height: 1.5em;
+    color: #e8e8ec;
+}
+
+#main-menu {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+menu>li {
+    display: inline;
+}
