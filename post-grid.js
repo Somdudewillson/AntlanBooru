@@ -29,7 +29,7 @@ async function searchForPosts(formObject) {
     const shuffleRatio = selectedRatio == -1;
     for (const loader of loaders) {
         const imageSize = shuffleRatio?aspectRatios[Math.floor(Math.random() * 3)]:aspectRatios[selectedRatio];
-        const next_image_data = await fetchThumbnailImage(prompt, seed++, imageSize);
+        const next_image_data = await fetchThumbnailImage(prompt, seed++, imageSize, scale, uc);
 
         var newImg = document.createElement("img");
         newImg.setAttribute("src", next_image_data.data);
