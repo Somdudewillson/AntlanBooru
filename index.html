@@ -50,6 +50,10 @@
         >
           <label for="access-key">NovelAI Access Key:</label>
           <input type="text" name="access-key" id="access-key" /><br />
+          <label for="cfg-scale">CFG Scale:</label>
+          <input type="number" name="cfg-scale" id="cfg-scale" value="11"/><br />
+          <label for="uc-user">Undesired Content:</label>
+          <textarea id="uc-user" name="uc-user" rows="4" cols="75"></textarea>
           <button id="settings-submit" type="submit">Save Settings</button
           ><span class="loader"></span>
           <div id="setting-save-response"></div>

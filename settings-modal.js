@@ -15,6 +15,14 @@ function openSettings() {
     if (access_key != undefined) {
       document.getElementById("access-key").value = access_key;
     }
+    const cfg_scale = Cookies.get('cfg_scale');
+    if (cfg_scale != undefined) {
+      document.getElementById("cfg_scale").value = cfg_scale;
+    }
+    const user_uc = Cookies.get('user_uc');
+    if (user_uc != undefined) {
+      document.getElementById("user_uc").value = user_uc;
+    }
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -41,5 +49,16 @@ async function tryUpdateSettings(formObject) {
     Cookies.set('access_key', access_key);
   } else {
     settingsModalResponse.innerHTML = "<span class='error-message'>"+key_result[1]+"</span>";
+    return;
   }
+
+  var cfgScale = formObject["cfg-scale"].value;
+  if (cfgScale!=undefined) {
+    if (cfgScale < 1.1) { cfgScale = 1.1; }
+
+    Cookies.set('cfg_scale', cfgScale);
+  } else {
+    formObject["cfg-scale"].value = 11;
+  }
+  Cookies.set('user_uc', formObject["uc-user"].value);
 }
