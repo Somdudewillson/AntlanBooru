@@ -21,9 +21,8 @@ async function searchForPosts(formObject) {
         case 'known':
             for (let i = 0; i < appendArray.length; i+=5) {
                 var selectedArtist = artists[Math.floor(Math.random() * artists.length)];
-                selectedArtist = ', '+"{".repeat(artistAmp)+'by '+selectedArtist+"}".repeat(artistAmp)
+                selectedArtist = ', '+"{".repeat(artistAmp)+'by '+selectedArtist+"}".repeat(artistAmp);
                 appendArray = appendArray.fill(selectedArtist,i,i+5);
-                console.log(selectedArtist)
             }
             break;
         default:
@@ -54,7 +53,7 @@ async function searchForPosts(formObject) {
 
         var newImg = document.createElement("img");
         newImg.setAttribute("src", next_image_data.data);
-        newImg.setAttribute("alt", augPrompt);
+        newImg.setAttribute("title", augPrompt);
         newImg.setAttribute('class','post-preview-image')
 
         var newLink = document.createElement("a");

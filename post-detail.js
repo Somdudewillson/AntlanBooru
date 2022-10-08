@@ -3,6 +3,7 @@ const resultsSection = document.getElementById("posts");
 const detailSection = document.getElementById("post-detail");
 
 const detailImgElement = document.getElementById("full-post");
+const detailPromptElement = document.getElementById("post-prompt");
 
 function returnToResults() {
     searchSection.style.display = "block";
@@ -10,6 +11,7 @@ function returnToResults() {
     detailSection.style.display = "none";
 
     detailImgElement.setAttribute("src", "");
+    detailPromptElement.innerText='';
 }
 
 function openDetail(linkElement) {
@@ -17,5 +19,8 @@ function openDetail(linkElement) {
     resultsSection.style.display = "none";
     detailSection.style.display = "block";
 
-    detailImgElement.setAttribute("src", linkElement.getElementsByClassName("post-preview-image")[0].src);
+    const previewImgElement = linkElement.getElementsByClassName("post-preview-image")[0];
+
+    detailImgElement.setAttribute("src", previewImgElement.src);
+    detailPromptElement.innerText=previewImgElement.title;
 }
