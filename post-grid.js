@@ -25,7 +25,7 @@ async function searchForPosts(formObject) {
         loaders.push(newLoaderContainer);
     }
 
-    var seed = 0;
+    var seed = formObject["start-seed"].value;
     const shuffleRatio = selectedRatio == -1;
     for (const loader of loaders) {
         const imageSize = shuffleRatio?aspectRatios[Math.floor(Math.random() * 3)]:aspectRatios[selectedRatio];
