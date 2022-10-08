@@ -12,3 +12,7 @@ a {
 p, a, li {
     line-height: 1.25em;
 }
+input, select, textarea {
+    background-color: #3f4058;
+    color: #d1d1da;
+}

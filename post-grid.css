@@ -1,10 +1,6 @@
 #search-box {
     text-align: center;
 }
-#search-box input, #search-box select {
-    background-color: #3f4058;
-    color: #d1d1da;
-}
 
 .post-gallery-grid .posts-container {
     display: grid;
