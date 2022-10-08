@@ -98,7 +98,23 @@
             <option value="1" selected>Portrait</option>
             <option value="2">Landscape</option>
             <option value="-1">Random</option>
-          </select>
+        </select>
+        <label for="artist-injection">Artist Injection</label>
+        <select name="artist-injection" id="artist-injection">
+            <option value="off" selected>Off</option>
+            <option value="known">Known</option>
+            <option value="absurd">Absurd</option>
+        </select>
+        <label for="artist-amp">Artist Amplification</label>
+        <input
+          type="number"
+          id="artist-amp"
+          name="artist-amp"
+          min="0"
+          max="10"
+          step="1"
+          value="0"
+        />
       </form>
     </section>
     <hr />
