@@ -7,6 +7,7 @@ async function searchForPosts(formObject) {
     postsContainer.innerHTML = '';
     const selectedRatio = formObject["aspect-ratio"].value;
     const scale = Cookies.get('cfg_scale')!=undefined?Cookies.get('cfg_scale'):11;
+    const ucPreset = Cookies.get('uc_preset')!=undefined?Cookies.get('uc_preset'):0;
     const uc = Cookies.get('user_uc')!=undefined?Cookies.get('user_uc'):'';
     const resultCount = formObject["result-quantity"].value;
 
@@ -49,11 +50,13 @@ async function searchForPosts(formObject) {
     for (const loader of loaders) {
         const imageSize = shuffleRatio?aspectRatios[Math.floor(Math.random() * 3)]:aspectRatios[selectedRatio];
         const augPrompt = prompt+appendArray[idx++];
-        const next_image_data = await fetchThumbnailImage(augPrompt, seed++, imageSize, scale, uc);
+        const next_image_data = await fetchThumbnailImage(augPrompt, seed, imageSize, scale, ucPreset, uc);
 
         var newImg = document.createElement("img");
         newImg.setAttribute("src", next_image_data.data);
         newImg.setAttribute("title", augPrompt);
+        newImg.dataset.prompt = augPrompt;
+        newImg.dataset.seed = seed;
         newImg.setAttribute('class','post-preview-image')
 
         var newLink = document.createElement("a");
@@ -62,9 +65,10 @@ async function searchForPosts(formObject) {
         newLink.appendChild(newImg);
 
         loader.replaceWith(newLink);
+        seed++;
     }
 }
 
-async function fetchThumbnailImage(prompt, seed, size, scale, uc='') {
-    return await NovelAI_API.generateImage(prompt,'nai-diffusion',seed,size[0],size[1],28,'k_euler_ancestral',scale,uc.length===0?0:2,uc);
+async function fetchThumbnailImage(prompt, seed, size, scale, ucPreset=2, uc='') {
+    return await NovelAI_API.generateImage(prompt,'nai-diffusion',seed,size[0],size[1],28,'k_euler_ancestral',scale,ucPreset,uc);
 }

@@ -17,11 +17,15 @@ function openSettings() {
     }
     const cfg_scale = Cookies.get('cfg_scale');
     if (cfg_scale != undefined) {
-      document.getElementById("cfg_scale").value = cfg_scale;
+      document.getElementById("cfg-scale").value = cfg_scale;
+    }
+    const uc_preset = Cookies.get('uc_preset');
+    if (uc_preset != undefined) {
+      document.getElementById("uc-preset").value = uc_preset;
     }
     const user_uc = Cookies.get('user_uc');
     if (user_uc != undefined) {
-      document.getElementById("user_uc").value = user_uc;
+      document.getElementById("uc-user").value = user_uc;
     }
 }
 
@@ -60,5 +64,6 @@ async function tryUpdateSettings(formObject) {
   } else {
     formObject["cfg-scale"].value = 11;
   }
+  Cookies.set('uc_preset', formObject["uc-preset"].value);
   Cookies.set('user_uc', formObject["uc-user"].value);
 }

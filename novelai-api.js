@@ -15,7 +15,10 @@ class NovelAI_API {
   }
 
   static streamRegex = /event:\s*(.*)\nid:\s*(.*)\ndata:(.*)/s;
-  static ucPresets = ['nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, blurry, blurry background, blur, blurred, long limbs, extra limbs, mutated, mutated limbs','',''];
+  static ucPresets = [
+    'nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, blurry, blurry background, blur, blurred, long limbs, extra limbs, mutated, mutated limbs',
+    'nsfw, lowres, text, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry',
+    ''];
   static async generateImage(prompt, model, seed, width, height, steps, sampler, scale, ucPreset, uc = '', strength = 0.7, noise = 0.2) {
     if (this.accessToken === undefined) { return [false, 'No access token']; }
 
@@ -33,7 +36,7 @@ class NovelAI_API {
             "strength": strength,
             "noise": noise,
             "ucPreset": ucPreset,
-            "uc": this.ucPresets[ucPreset]+(uc.length>0 ? ' '+uc : '')
+            "uc": this.ucPresets[ucPreset]+(this.ucPresets[ucPreset].length>0 && uc.length>0 ? ', ' + uc:'')
         }
     }
     const result = await fetch('https://api.novelai.net/ai/generate-image',

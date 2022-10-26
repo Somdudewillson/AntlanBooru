@@ -4,6 +4,7 @@ const detailSection = document.getElementById("post-detail");
 
 const detailImgElement = document.getElementById("full-post");
 const detailPromptElement = document.getElementById("post-prompt");
+const detailSeedElement = document.getElementById("post-seed");
 
 function returnToResults() {
     searchSection.style.display = "block";
@@ -12,6 +13,7 @@ function returnToResults() {
 
     detailImgElement.setAttribute("src", "");
     detailPromptElement.innerText='';
+    detailSeedElement.innerText='';
 }
 
 function openDetail(linkElement) {
@@ -22,5 +24,6 @@ function openDetail(linkElement) {
     const previewImgElement = linkElement.getElementsByClassName("post-preview-image")[0];
 
     detailImgElement.setAttribute("src", previewImgElement.src);
-    detailPromptElement.innerText=previewImgElement.title;
+    detailPromptElement.innerText=previewImgElement.dataset.prompt;
+    detailSeedElement.innerText=previewImgElement.dataset.seed;
 }

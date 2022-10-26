@@ -52,6 +52,11 @@
           <input type="text" name="access-key" id="access-key" /><br />
           <label for="cfg-scale">CFG Scale:</label>
           <input type="number" name="cfg-scale" id="cfg-scale" value="11"/><br />
+          <select name="uc-preset" id="uc-preset">
+              <option value="0" selected>Low Quality + Bad Anatomy</option>
+              <option value="1">Low Quality</option>
+              <option value="2">None</option>
+          </select>
           <label for="uc-user">Undesired Content:</label>
           <textarea id="uc-user" name="uc-user" rows="4" cols="75"></textarea>
           <button id="settings-submit" type="submit">Save Settings</button
@@ -130,6 +135,7 @@
       <hr />
       <pre id="post-prompt"></pre>
       <img id="full-post" src="" />
+      <pre id="post-seed"></pre>
     </section>
   </body>
 </html>
